@@ -1,0 +1,5 @@
+Epoch     Loss      Train_acc      Val_acc        
+1         1.0062    0.3235         0.3837         
+2         1.7067    0.3653         0.3475         
+
+Test accuracy for rnn_4-10: 0.4
