@@ -35,9 +35,9 @@ class RNN(nn.Module):
         return self.loss(predicted_vector, gold_label)
 
     def forward(self, inputs):
-        embedded = self.embedding(inputs)  # Shape: (seq_len, batch_size, embedding_dim)
+        embedded = self.embedding(inputs)  #
         rnn_out, hidden = self.rnn(embedded)
-        # Process rnn_out or hidden as needed, e.g.:
+
         time_step_logits = self.W(rnn_out)
         summed_logits = torch.sum(time_step_logits, dim=0)
         predicted_vector = self.softmax(summed_logits)
@@ -175,10 +175,8 @@ if __name__ == "__main__":
                 input_words = " ".join(input_words)
                 input_words = input_words.translate(input_words.maketrans("", "", string.punctuation)).split()
 
-                # Look up word embedding dictionary
                 indices = [word2index.get(w.lower(), word2index['<UNK>']) for w in input_words]
 
-                # Transform the input into required shape
                 indices_tensor = torch.tensor(indices).view(len(indices), 1)
                 output = model(indices_tensor)
 
